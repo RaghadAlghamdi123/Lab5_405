@@ -443,12 +443,10 @@ const data = [
 ];
 
 
-// عناصر HTML
 const tableBody = document.getElementById("player-rows");
 const searchInput = document.getElementById("search");
 const teamFilter = document.getElementById("team-filter");
 
-// عرض اللاعبين في الجدول
 function displayPlayers(players) {
     tableBody.innerHTML = "";
 
@@ -467,10 +465,9 @@ function displayPlayers(players) {
     });
 }
 
-// تعبئة قائمة الفرق في الـ dropdown
 function populateTeamFilter() {
     const teams = Array.from(new Set(data.map(player => player.team)));
-    teams.sort(); // ترتيب الفرق
+    teams.sort(); 
 
     teams.forEach(team => {
         const option = document.createElement("option");
@@ -480,7 +477,6 @@ function populateTeamFilter() {
     });
 }
 
-// البحث والتصفية حسب الاسم والفريق
 function filterPlayers() {
     const keyword = searchInput.value.toLowerCase();
     const selectedTeam = teamFilter.value;
@@ -500,11 +496,9 @@ function filterPlayers() {
     displayPlayers(filtered);
 }
 
-// الأحداث (Events)
 searchInput.addEventListener("input", filterPlayers);
 teamFilter.addEventListener("change", filterPlayers);
 
-// تشغيل عند تحميل الصفحة
 displayPlayers(data);
 populateTeamFilter();
 
